@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TUQuiet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-white">
+  <div class="container mt-4">
+    <h1>TUQuiet</h1>
+    
+    <!-- Featured Study Space -->
+    <div class="card bg-secondary mb-3">
+      <div class="card-body">
+        <h5>SERC 3rd Floor Lounge</h5>
+        <p>Status: Quiet | Not Crowded</p>
+        <small>6 recent reports</small>
+      </div>
+    </div>
+
+    <!-- Quick Report Form -->
+    <h3>Quick Report</h3>
+    <form id="reportForm">
+      <div class="mb-2">
+        <label for="location" class="form-label">Location</label>
+        <select id="location" class="form-select">
+          <option value="">Select a location</option>
+          <option>Tech Center 3rd Floor</option>
+          <option>SERC 3rd Floor Lounge</option>
+          <option>Library Atrium</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Noise</label>
+        <div>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="noise" value="quiet" class="form-check-input">Quiet
+          </label>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="noise" value="moderate" class="form-check-input">Moderate
+          </label>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="noise" value="loud" class="form-check-input">Loud
+          </label>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Crowd</label>
+        <div>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="crowd" value="low" class="form-check-input">Low
+          </label>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="crowd" value="medium" class="form-check-input">Medium
+          </label>
+          <label class="form-check form-check-inline">
+            <input type="radio" name="crowd" value="high" class="form-check-input">High
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-light">Submit Report</button>
+    </form>
+
+    <hr>
+    
+    <!-- API Test Section -->
+    <h3>Test API Endpoint</h3>
+    <button id="testButton" class="btn btn-primary">Test API</button>
+    <p id="apiResponse"></p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dummy form submission handler
+    document.getElementById('reportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Report submitted (dummy action).');
+    });
+    
+    // Test API connectivity
+    document.getElementById('testButton').addEventListener('click', function() {
+      fetch('/test')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('apiResponse').innerText = data;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
